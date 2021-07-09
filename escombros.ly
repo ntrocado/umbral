@@ -22,18 +22,18 @@
 
 sax = \relative c'' {
   f2~ f8 bes ges beses ces4~ |
-  ces2. r2 c4 |
-  d b8 bes8~ bes4~ bes r4 e,4. |
+  ces2. r2 c4~ |
+  c b8 bes8~ bes4~ bes r4 e,4. |
 }
 
 guitar = \relative c'' {
-  \repeat unfold 2 <b e g>4 r4 r8
+  \repeat unfold 2 <a c g>4 r4 r8
   <c e fis>4 <c e fis>8~ |
   <c e fis>8 r8 r4
-  \repeat unfold 2 <c ees b'>4 r4
-  r8 <aes f' b>8~ |
-  <aes f' b>8 <aes f' b>4 r8 r4
-  \repeat unfold 2 <c e fis>4 r4.
+  \repeat unfold 2 <a ees f>4 r4
+  r8 <bes f' b>8~ |
+  <bes f' b>8 <bes f' b>4 r8 r4
+  \repeat unfold 2 <a dis gis>4 r4.
 }
 
 bass = \relative c {
@@ -104,5 +104,27 @@ drumset = {
   \midi { }
   \layout {
     ragged-last = ##t
+  }
+}
+
+\markup {
+  \bold { On cue: }
+}
+
+\score {
+  \new Staff {
+    \clef bass
+    \time 5/2
+    \relative c, {
+      f2 bes ges a b |
+      \compoundMeter #'((5 2) (1 2))    
+      f2 bes ges a b \bar "!" c |
+      \compoundMeter #'((5 2) (3 4))    
+      f,2 bes ges a b \bar "!" c4 bes e, |
+      \bar ":|."
+    }
+  }
+  \layout {
+    indent = #0
   }
 }
