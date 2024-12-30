@@ -4,11 +4,11 @@
 
 \header {
   title = "Umbral"
-  subtitle = "Saturno"
+  subtitle = "Baile"
   composer = \markup {
     \right-column {
       \line { \smallCaps "Nuno Trocado" }
-      \line { \date }
+      \line { "06/07/2021" }
     }
   }
 }
