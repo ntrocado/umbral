@@ -1,4 +1,4 @@
-\version "2.22.0"
+\version "2.25.18"
 
 \include "defaults.ly"
 
@@ -8,10 +8,10 @@ proportionalWrapper =
      (ly:music?)
    #{
      \newSpacingSection
-     \set Score.proportionalNotationDuration = #(ly:make-moment 1/2)
+     \set Score.proportionalNotationDuration = \musicLength 2
      \override SpacingSpanner.uniform-stretching = ##t
      #music
-     \set Score.proportionalNotationDuration = #(ly:make-moment 1/1)
+     \set Score.proportionalNotationDuration = \musicLength 1
    #})
 
 barBreak = {
@@ -33,7 +33,7 @@ loopStart = {
   \cadenzaOff
   \undo \omit Staff.TimeSignature
   \noBreak
-  \bar "[|:"
+  \bar "[|:-|"
 }
 
 loopStop = {
@@ -68,7 +68,7 @@ featheredBeams =
     \proportionalWrapper {
       \stemOn
       \override Beam.grow-direction = #RIGHT
-      \featherDurations #(ly:make-moment 1/4)
+      \featherDurations 1/4
       { #music }
       \override Beam.grow-direction = #'()
       \markupStencil \squiggle r4
@@ -98,11 +98,11 @@ drum = \markup \with-color #darkmagenta "drums"
 
 \header {
   title = "Umbral"
-  subtitle = "Ninguém fica para trás"
+  subtitle = "Fragmentos"
   composer = \markup {
     \right-column {
       \line { \smallCaps "Nuno Trocado" }
-      \line { \date }
+      \line { "06/07/2021" }
     }
   }
 }
@@ -125,7 +125,7 @@ drum = \markup \with-color #darkmagenta "drums"
     \line { Notated rhythms can be played with a steady pulse or not. Phrases can be transposed by octaves. }
     \line {
       \score {
-	{ \omit Staff.Clef \omit Staff.TimeSignature \bar "[|:" s4 \bar ":|]" }
+	{ \omit Staff.Clef \omit Staff.TimeSignature \bar "[|:-|" s4 \bar ":|]" }
 	\layout { indent = #0 }
       }
       → Repeat as many times as you want, make progressive changes.
@@ -148,9 +148,9 @@ bari = \markup { bari }
 \score {
   
   \relative c' {
-    \override Staff.Clef #'break-visibility = #all-invisible
+    \override Staff.Clef.break-visibility = #all-invisible
     \override Staff.Clef.full-size-change = ##t
-    \set Score.markFormatter = #format-mark-numbers
+    \set Score.rehearsalMarkFormatter = #format-mark-numbers
     \override Score.RehearsalMark.font-size = #1
     \omit Staff.TimeSignature
     \numericTimeSignature
@@ -294,13 +294,16 @@ bari = \markup { bari }
 
     \clef treble
     s8_\flute \aTrill
-    
+
+    %% 26
     \loopStart
     \stemOn
     \clef bass
     \time 4/4
+    \noBreak
     gis,,4_\guitar_\bass b d2
     \time 3/8
+    \noBreak
     a4 bes8
     \loopStop
     
