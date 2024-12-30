@@ -1,4 +1,4 @@
-\version "2.22.0"
+\version "2.25.18"
 
 dyn=#(define-event-function (parser location arg) (markup?)
       (make-dynamic-script arg))
@@ -77,7 +77,7 @@ parent."
  (cond
    ((not (ly:grob? parent))
     (ly:error
-       (_"Perhaps typing error for \"~a\" or \"~a\" is not in the parent-tree.")
+       ("Perhaps typing error for \"~a\" or \"~a\" is not in the parent-tree.")
        name-symbol name-symbol))
    ((equal? name-symbol (grob::name grob)) grob)
    ((not (equal? name-symbol (grob::name parent)))
@@ -135,7 +135,7 @@ date = #(strftime "%d/%m/%Y" (localtime (current-time)))
 }
 
 \layout {
-  \set Score.markFormatter = #format-mark-box-alphabet
+  \set Score.rehearsalMarkFormatter = #format-mark-box-alphabet
   \context {
     \Staff
     \accidentalStyle modern
